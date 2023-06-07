@@ -1,5 +1,5 @@
 {% extends 'blog/base.html' %}
-
+{% load static %}
 {% block content %}
 
 <main class="SoloPage">
@@ -20,6 +20,15 @@
       <input class="btn btn-success" type="submit">
     </div>
   </form>
+</div>
+
+<div class="comments_block">
+  {% for comment in post.comments_set.all %}
+     <div class="comment">
+       <h5>{{ comment.name }}</h5>
+       <p>{{ comment.text_comment}}</p>
+     </div>
+  {% endfor %}
 </div>
 
 {% endblock%}

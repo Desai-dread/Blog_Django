@@ -123,3 +123,17 @@ h4{
     resize:none;
     border:0;
     border-bottom:2px solid #bebed2}
+
+.comments_block{
+    border: 2px solid black;
+    margin-top: 3vh;
+    margin-left: 3vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.comment{
+    padding: 10px;
+
+
+}

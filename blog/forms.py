@@ -1,4 +1,4 @@
-from .models import Pin
+from .models import Pin, Comments
 from django.forms import ModelForm, TextInput, Textarea
 
 
@@ -25,3 +25,8 @@ class PinForm(ModelForm):
                 'type': 'date'
             }),
                    }
+
+class CommentsForm(ModelForm):
+    class Meta:
+        model = Comments
+        fields = ["email", "name", "text_comment"]

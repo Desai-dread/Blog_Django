@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, redirect
 from django.views.generic.base import View
 from .models import Pin
-from .forms import PinForm
+from .forms import PinForm, CommentsForm
 
 
 class PostView(View):
@@ -16,10 +16,19 @@ class SoloPage(View):
         post = Pin.objects.get(id=pk)
         return render(request, 'blog/SoloPage.html', {'post': post})
 
+
+
 class AddComments(View):
     """Добавляем комментарии"""
     def post(self, request, pk):
-        return redirect('/')
+        form = CommentsForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post_id = pk
+            comment.save()
+        return redirect(f'/{pk}')
+
+
 
 
 def create(request):
@@ -38,3 +47,4 @@ def create(request):
         'error': error
     }
     return render(request, 'blog/create.html', context)
+
