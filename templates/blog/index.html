@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+
+{% block content%}
+<main class="container">
+	{% for post in post_list %}
+	<article class="note">
+		<h4>{{ post.tittle }}</h4>
+		<p class="notes">{{ post.subTitle}}...</p>
+		<p class="notes">Автор:  {{ post.author }}</p>
+		<a class="button" href="{{ post.id }}">Читать</a>
+	</article>
+
+	{% endfor %}
+</main>
+
+
+{% endblock%}
+
+
+<!--{% for post in post_list %}-->
+<!--		<h4>{{ post.tittle }}</h4>-->
+<!--		<p>{{ post.subtitle}}</p>-->
+<!--		<p>Автор:  {{ post.author }}</p>-->
+<!--{% endfor %}-->
